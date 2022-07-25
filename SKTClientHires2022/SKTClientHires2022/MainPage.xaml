@@ -1,0 +1,69 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="SKTClientHires2022.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+    <StackLayout Orientation="Vertical">
+    <Grid RowSpacing="10" ColumnSpacing="20"
+          RowDefinitions="1*,1*,1*,1*,1*,1*,1*,1*, 1*"
+          ColumnDefinitions="1*, 1*, 1*"
+          Margin="5" Padding="10">
+
+            <Label Grid.Row="0" Grid.Column="0" 
+               Grid.ColumnSpan="3" 
+               Text="Welcome to SKT" FontSize="60" HorizontalTextAlignment="Center" />
+            <Label Grid.Row="1" Grid.ColumnSpan="3" Text="Login with your Personal Number Below" FontSize="25" HorizontalTextAlignment="Center" />
+            <Entry Grid.Row="2" Grid.ColumnSpan="3"
+                FontSize="Large"
+                Keyboard="Numeric"
+                x:Name="entPassword"
+                Placeholder="Enter your passcode" 
+                IsPassword="True"  HorizontalTextAlignment="Center" android:Entry.ImeOptions="Send" />
+            <Button Grid.Row="3" Grid.Column="0" 
+                Grid.ColumnSpan="3" x:Name="btnLogin" 
+                Clicked="BtnLogin_Clicked" FontSize="90" 
+                Text="LOGIN" HeightRequest="150" />
+            <Label Grid.Row="4" Grid.Column="0" x:Name="StatusLabel"
+            Text="No data Loaded"
+            Margin="10"
+            FontSize="14"
+            FontAttributes="Bold" />
+            <Entry Grid.Row="5" Grid.Column="0" x:Name="entAdminKey"
+            Keyboard="Numeric"
+            Placeholder="Enter Admin Key"
+            FontAttributes="Bold"
+            IsPassword="True" android:Entry.ImeOptions="Send"/>
+
+            <Button x:Name="btnMembersCheck"
+                Text="Load Staff Data[Admin]"
+                FontAttributes="Bold"
+                Clicked="BtnMembersCheck_Clicked"
+                HeightRequest="50"
+                Grid.Row="4" Grid.Column="2" />
+
+        <Button x:Name="btnAddNewMember"
+                Text="Admin Area"
+                FontAttributes="Bold"
+                Clicked="BtnAddNewMember_Clicked"
+                HeightRequest="50"
+                Grid.Row="5" Grid.Column="2" />
+
+        <CollectionView x:Name="BooksListControl" BackgroundColor="AliceBlue" Grid.Row="6" Grid.ColumnSpan="3" Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="1*" ColumnDefinitions="1*, 1*, 1*, 1*, 1*, 1*, 1*" ColumnSpacing="10" HorizontalOptions="CenterAndExpand">
+                            <HorizontalStackLayout Margin="0,0,0,10">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Usr}" TextColor="#E4962C"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text=" Last Logged in " />
+                            <Label Grid.Row="0" Grid.Column="4" Text="{Binding DateStamp}" TextColor="#E4962C"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text=" @ " />
+                            <Label Grid.Row="0" Grid.Column="6" Text="{Binding TimeStamp}" TextColor="#E4962C"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ImageButton x:Name="btnHelpIcon" Grid.Row="8" Grid.Column="1" Clicked="BtnHelpIcon_Clicked"></ImageButton>
+        </Grid>
+    </StackLayout>
+</ContentPage>

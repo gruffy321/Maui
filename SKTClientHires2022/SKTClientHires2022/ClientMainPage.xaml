@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SKTClientHires2022.ClientMainPage"
+             Title="ClientMainPage">
+    <Grid x:Name="mainGrid"
+          ColumnDefinitions="0.2*, 0.2*, 0.2*, 0.2*" 
+          RowDefinitions="Auto, Auto, Auto, 350"
+          Margin="15" Padding="10" 
+          HorizontalOptions="CenterAndExpand">
+        <HorizontalStackLayout Grid.Row="0" Grid.ColumnSpan="5">
+            <Grid RowDefinitions="1*, 1*, 1*" 
+                  ColumnDefinitions="0.5*, 0.5*" Padding="40" >
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" 
+                      RowDefinitions="1*, 1*, 1*, 1*" 
+                      ColumnDefinitions="0.25*, 0.25*, 0.25*, 0.25*"
+                      RowSpacing="100"
+                      Margin="50,0,0,15"
+                      Padding="20" ColumnSpacing="20">
+                    <Entry Grid.Row="0" Grid.Column="0"
+                           WidthRequest="250"
+                           x:Name="nameEntry" 
+                           MaxLength="21"
+                           Focused="NameEntry_Focused" 
+                           Placeholder="Enter Hire Name"
+                           />
+                    <CheckBox Grid.Row="0" Grid.Column="1"
+                           x:Name="ageNotOK"
+                           CheckedChanged="AgeNotOK_CheckedChanged"
+                            />
+                    <Entry Grid.Row="0" Grid.Column="2" 
+                           x:Name="signatureEntry"
+                           MaxLength="21"
+                           Placeholder="Enter Parent Name" 
+                            />
+                    <Entry Grid.Row="0" Grid.Column="3" 
+                           x:Name="contactEntry"
+                           Keyboard="Telephone"
+                           MaxLength="11"
+                           Placeholder="Parental Contact" />
+                    <!--<Label x:Name="lblUnderAge"  Grid.Row="0" Grid.Column="3"
+                           Text="Is hirer under 18? [check box]"
+                           LineBreakMode="NoWrap" 
+                           Margin="15" />-->
+
+
+                </Grid>
+                <!--Image hire a image picker area-->
+                <Grid x:Name="imgGrid" Grid.Row="1" Grid.ColumnSpan="5"
+                      ColumnDefinitions="0.2*, 0.2*, 0.2*, 0.2*, 0.2*, 0.2*" 
+                      Margin="5" Padding="20" ColumnSpacing="10" HorizontalOptions="Center">
+                    <!--sup options-->
+                <SwipeView Grid.Row="1" Grid.Column="0" HeightRequest="155" WidthRequest="200">
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <!--<SwipeItem Text="Paddle" BackgroundColor="#00223a" Invoked="PaddleSwipeItem_Invoked" />-->
+                                <SwipeItem x:Name="imgSupLed1hr" Text="LED 1HR" IconImageSource="icosuponehr.png" BackgroundColor="#00223a" Invoked="SupLed1hr_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <!--<SwipeItem Text="Paddle" BackgroundColor="#00223a" Invoked="PaddleSwipeItem_Invoked" />-->
+                                <SwipeItem x:Name="imgSup2HrTour" Text="TOUR 2HR" IconImageSource="icosuptwohr.png" BackgroundColor="#00223a" Invoked="Sup2HrTour_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.TopItems>
+                            <SwipeItems>
+                                <!--<SwipeItem Text="Paddle" BackgroundColor="#00223a" Invoked="PaddleSwipeItem_Invoked" />-->
+                                <SwipeItem x:Name="imgSupHalfDayTour" Text="SUP HALF DAY" IconImageSource="icosuphalfday.png" BackgroundColor="#00223a" Invoked="SupHalfDayTour_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.TopItems>
+                        <SwipeView.BottomItems>
+                            <SwipeItems>
+                                <!--<SwipeItem Text="Paddle" BackgroundColor="#00223a" Invoked="PaddleSwipeItem_Invoked" />-->
+                                <SwipeItem x:Name="imgSup1Hr" Text="SUP 1HR" IconImageSource="icosup.png" BackgroundColor="#00223a" Invoked="Sup1Hr_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.BottomItems>
+                        <Image Source="whiteicosupbig.png"
+                       BackgroundColor="#e4962c" Grid.Column="0" Grid.Row="0"/>
+                </SwipeView>
+                    <!--kayak options-->
+                <SwipeView Grid.Row="1" Grid.Column="1" HeightRequest="155" WidthRequest="200">
+                    <SwipeView.LeftItems>
+                        <SwipeItems>
+                                <SwipeItem x:Name="imgTandem" Text="Tandem" IconImageSource="icotandemk.png" BackgroundColor="#00223a" Invoked="Tandem_Invoked" />
+                            <!--<SwipeItem Text="SUP" IconImageSource="icosuptwohr.png" BackgroundColor="#00223a" Invoked="SUPSwipeItem_Invoked"/>-->
+                        </SwipeItems>
+                    </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="imgQuattro" Text="Quattro" IconImageSource="icoquattrok.png" BackgroundColor="#00223a" Invoked="Quattro_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.TopItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="imgCroc" Text="Croc" IconImageSource="icocroc.png" BackgroundColor="#00223a" Invoked="Croc_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.TopItems>
+                        <SwipeView.BottomItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="imgSolo" Text="Solo" IconImageSource="icosolok.png" BackgroundColor="#00223a" Invoked="Solo_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.BottomItems>
+                        <Image Source="whiteicosolokbig.png"
+                       BackgroundColor="#e4962c" Grid.Column="1" Grid.Row="0"/>
+                </SwipeView>
+                    <!--boat options-->
+                    <SwipeView Grid.Row="1" Grid.Column="2" HeightRequest="155" WidthRequest="200">
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="icoRowBoat" Text="Row Boat" IconImageSource="icorowboat.png" BackgroundColor="#00223a" Invoked="RowBoat_Invoked" />
+                                <!--<SwipeItem Text="SUP" IconImageSource="sup.png" BackgroundColor="#00223a" Invoked="SUPSwipeItem_Invoked"/>-->
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="icoCanoe" Text="Canoe" IconImageSource="icocanoe.png" BackgroundColor="#00223a" Invoked="Canoe_Invoked" />
+                                <!--<SwipeItem Text="SUP" IconImageSource="sup.png" BackgroundColor="#00223a" Invoked="SUPSwipeItem_Invoked"/>-->
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.TopItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="icoPedalo" Text="Pedalo" IconImageSource="icopedalo.png" BackgroundColor="#00223a" Invoked="Pedalo_Invoked" />
+                                <!--<SwipeItem Text="SUP" IconImageSource="sup.png" BackgroundColor="#00223a" Invoked="SUPSwipeItem_Invoked"/>-->
+                            </SwipeItems>
+                        </SwipeView.TopItems>
+                        <SwipeView.BottomItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="icoBoat30m" Text="Boat 30 M" IconImageSource="icoboat.png" BackgroundColor="#00223a" Invoked="Boat30m_Invoked" />
+                                <SwipeItem x:Name="icoBoat1Hr" Text="Boat 60 M" IconImageSource="icoboat.png" BackgroundColor="#00223a" Invoked="Boat1Hr_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.BottomItems>
+                        <Image Source="whiteicoboatbig.png"
+                       BackgroundColor="#e4962c" Grid.Column="1" Grid.Row="0"/>
+                    </SwipeView>
+                    <!--paddle options-->
+                    <SwipeView Grid.Row="1" Grid.Column="3" HeightRequest="155" WidthRequest="200">
+                        <SwipeView.TopItems>
+                            <SwipeItems>
+                                <SwipeItem x:Name="icoPaddle" Text="Paddle" IconImageSource="icopaddles.png" BackgroundColor="#00223a" Invoked="Paddle_Invoked" />
+                                <!--<SwipeItem x:Name="icoFloat" Text="Float" IconImageSource="icofloatjacket.png" BackgroundColor="#00223a" Invoked="Float_Invoked"/>-->
+                            </SwipeItems>
+                        </SwipeView.TopItems>
+                        <SwipeView.BottomItems>
+                            <SwipeItems>
+                                <!--<SwipeItem x:Name="icoPaddle" Text="Paddle" IconImageSource="icopaddles.png" BackgroundColor="#00223a" Invoked="Paddle_Invoked" />-->
+                                <SwipeItem x:Name="icoFloat" Text="Float" IconImageSource="icofloatjacket.png" BackgroundColor="#00223a" Invoked="Float_Invoked"/>
+                            </SwipeItems>
+                        </SwipeView.BottomItems>
+                        <Image x:Name="imgMisc" Source="whiteicomiscbig.png"
+                       BackgroundColor="#e4962c" Grid.Column="1" Grid.Row="0"/>
+                    </SwipeView>
+                </Grid>
+                <!--Price and Time Picker-->
+                <Grid Grid.Row="2" Grid.ColumnSpan="5"
+                      ColumnDefinitions="1*, 1*, 1*, 1*"
+                      ColumnSpacing="40" Margin="5" Padding="50, 0, 50, 0" HorizontalOptions="Center">
+                    <Label Grid.Column="0"
+                               x:Name="lblHirePrice"
+                               Text="Price"
+                               LineBreakMode="NoWrap"
+                               FontSize="90" WidthRequest="250"/>
+                    <ImageButton x:Name="btnCashOrCard" Grid.Row="1" Grid.Column="1" WidthRequest="105" HeightRequest="100" BackgroundColor="#e4962c" Clicked="BtnCashOrCard_Clicked"/>
+                    <TimePicker Grid.Column="2" 
+                                    x:Name="tpHireTime" 
+                                    PropertyChanged="TimePicker_PropertyChanged"
+                                FontSize="80"/>
+                    <ImageButton x:Name="btnCamera" Grid.Column="3" WidthRequest="105" HeightRequest="100" BackgroundColor="#e4962c" Clicked="BtnCamera_Clicked"/>
+
+
+                </Grid>
+            </Grid>
+        </HorizontalStackLayout>
+        <!--Button interactions-->
+        <StackLayout Grid.Row="1" Margin="10" Grid.ColumnSpan="5" HorizontalOptions="Center">
+            <Button HeightRequest="80" Text="SEND HIRE" Clicked="BtnAddUser_Clicked" />
+            <Grid RowDefinitions="1*, 1*, 1*" ColumnDefinitions="0.3*, 0.3*, 0.3*" Margin="5" Padding="10" RowSpacing="10" ColumnSpacing="25">
+                <Button Grid.Row="0" Grid.Column="0" Text="CLEAR Hire Details " Clicked="BtnClearFields_Clicked" />
+                <Button Grid.Row="1" Grid.Column="0" Text="  Update Customer  " Clicked="BtnUpdateUser_Clicked" IsEnabled="False" />
+                <Button Grid.Row="2" Grid.Column="0" Text="  Delete Customer  " Clicked="BtnDeleteUser_Clicked" />
+                <Button Grid.Row="0" Grid.Column="1" Text="See All Child Hires" Clicked="BtnSeeChildOnlyHires_Clicked" />
+                <Button Grid.Row="1" Grid.Column="1" Text="See All Adult Hires" Clicked="BtnSeeAdultOnlyHires_Clicked" />
+                <Button Grid.Row="2" Grid.Column="1" Text="   See All Hires   " Clicked="BtnSeeAllHires_Clicked"/>
+                <Button Grid.Row="0" Grid.Column="2" Text="   CURRENT Hires   " Clicked="BtnSeeCurrentHires_Clicked" />
+                <Button Grid.Row="1" Grid.Column="2" Text="  COMPLETED Hires  " Clicked="BtnSeeCompletedHires_Clicked" />
+                <Button Grid.Row="2" Grid.Column="2" Text="   REFRESH View    " Clicked="BtnRefreshHiresList_Clicked" />
+
+            </Grid>
+        </StackLayout>
+        <!--Grid fixed labels-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="5" Padding="5" Margin="45,0,0,0">
+            <Grid ColumnDefinitions="100, 100, 125, 100, 100, 50" ColumnSpacing="55"
+                 BackgroundColor="#E4962C">
+                <Label Grid.Column="0" Text="NAME" FontSize="Medium" HorizontalTextAlignment="End"/>
+                <Label Grid.Column="1" Text="SIGNED" FontSize="Medium" />
+                <Label Grid.Column="2" Text="PHONE" FontSize="Medium" />
+                <Label Grid.Column="3" Text="AGE NOT OK" FontSize="Medium" />
+                <Label Grid.Column="4" Text="HIRING" FontSize="Medium" />
+                <Label Grid.Column="5" Text="DUE BACK" FontSize="Medium" HorizontalTextAlignment="Start" />
+
+            </Grid>
+        </Grid>
+        <CollectionView Grid.Row="3" Grid.ColumnSpan="5" 
+                            x:Name="collectionView"  
+                            BackgroundColor="#44DCF2"
+                            SelectionMode="Single"
+                            SelectionChanged="CView_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--<StackLayout Orientation="Horizontal">-->
+                    <Grid Grid.ColumnSpan="5" Padding="5" Margin="45,10,0,10" ColumnDefinitions="100, 80, 100, 80, 80, 50" 
+                             RowSpacing="2" ColumnSpacing="70" BackgroundColor="#3EA8BE" HorizontalOptions="Center">
+                            <Label Grid.Column="0" TextColor="White" LineBreakMode="NoWrap" Text="{Binding Name}" FontSize="Medium" HorizontalTextAlignment="Center"  />
+                            <Label Grid.Column="1" TextColor="White" LineBreakMode="NoWrap" Text="{Binding Signature}" FontSize="Medium" HorizontalTextAlignment="Center"  />
+                            <Label Grid.Column="2" TextColor="White" LineBreakMode="NoWrap" Text="{Binding Contact}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <CheckBox Grid.Column="3" Margin="30,0,0,0" Color="WhiteSmoke" IsChecked="{Binding AgeNotOK}" IsEnabled="False" />
+                            <Label Grid.Column="4" TextColor="White" LineBreakMode="NoWrap" Text="{Binding HireImage}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="5" TextColor="White" LineBreakMode="NoWrap" Text="{Binding TimeDueIn}" FontSize="Medium" HorizontalTextAlignment="Start" />
+                        </Grid>
+                    <!--</StackLayout>-->
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

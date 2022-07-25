@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E4962C</color>
+	<color name="SecondaryColor">#FFFFFF</color>
+    <color name="colorPrimaryDark">#09223A</color>
+	<color name="colorSKTBlue">#44dcf2</color>
+	<color name="colorSktColorAccent">#3EA8BE</color>
+</resources>

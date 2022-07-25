@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SKTClientHires2022.AddStaff"
+             Title="Add New Staff">
+    <StackLayout>
+        <Grid RowDefinitions="1*, 1*, 1*, 1*, 1*, 1*, 1*, 1*, 1*, 1*, 1*, 1*" 
+              ColumnDefinitions="1*, 1*, 1*">
+            <Label Text="YO Admin! You can make a new staff member here!"  Grid.Row="0" Grid.Column="0"/>
+            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="Staff Name" />
+            <Entry x:Name="entStaffName" Grid.Row="0" Grid.Column="2" Placeholder="Enter new staff name" />
+            <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="3 Number Passcode" />
+            <Entry x:Name="entStaffPasscode" Keyboard="Numeric" Grid.Row="1" Grid.Column="2" Placeholder="3 numerics are required" />
+            <Label Grid.Row="3" Grid.Column="1" Text="Must be Entered to Save new Staff Member" />
+            <Entry x:Name="entAdminKey"
+                   Keyboard="Numeric"
+                    Grid.Row="3" Grid.Column="2"
+                    Placeholder="Enter Admin Key"
+                    FontAttributes="Bold"
+                    IsPassword="True" />
+            <Button Grid.Row="4" Grid.ColumnSpan="3" Text="Make New Staff Member" Clicked="BtnCreateNewStaff_Clicked"/>
+            <Button Grid.Row="5" Grid.ColumnSpan="3" Text="View Existing Staff Members [ADMIN KEY REQUIRED]" x:Name="btnViewMembers" Clicked="BtnViewExistingMembers_Clicked"/>
+            <Button Grid.Row="6" Grid.ColumnSpan="3" x:Name="btnDeleteMember" Text="Remove Staff Member - THIS IS FINAL" Clicked="BtnDeleteMember_Clicked" />
+            <Button Grid.Row="7" Grid.ColumnSpan="3" x:Name="btnOpenEmailerSystem" Text="Close off Today" Clicked="BtnOpenEmailerSystem_Clicked"></Button>
+            <Button Grid.Row="8" Grid.ColumnSpan="3" x:Name="btnZRead" Text="Z READ - PRESS THIS ONLY AFTER CLOSING OFF THE DAY [Admin key req'd]" Clicked="BtnZRead_Clicked" />
+
+            <CollectionView x:Name="memberView" Grid.Row="9" Grid.ColumnSpan="3" SelectionChanged="CView_SelectionChanged" SelectionMode="Single" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="1*,1*,1*,1*,1*" ColumnDefinitions="1*,1*,1*" Margin="20">
+                            <Label Grid.Row="0" Text="{Binding Usr}" />
+                            <Label Grid.Row="1" Text="{Binding Pass}" />
+                            <Label Grid.Row="2" Text="{Binding TimeStamp}" />
+                            <Label Grid.Row="3" Text="{Binding DateStamp}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SKTClientHires2022.InfoYodal"
+             Title="InfoYodal">
+    <Grid ColumnSpacing="10"
+          RowDefinitions="150, 250, 75, 1*"
+          ColumnDefinitions="1*,1*,1*"
+          >
+
+
+        <Label x:Name="lblExitIcon" Grid.Row="0" Grid.Column="0" 
+                   LineBreakMode="NoWrap"
+                       Text="X" HorizontalOptions="Start" 
+                       Margin="20" Padding="10"
+                       FontSize="60">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapNavigateBack" Tapped="TapNavigateBack_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+        <ImageButton x:Name="imgClientImage" Clicked="ImgClientImage_Clicked" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="200" WidthRequest="150"/>
+        <Image x:Name="imgClientExpanded" HeightRequest="800" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,250,0,0"/>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HeightRequest="350"
+                       x:Name="lblMessage" Text="Modal Messages appear here" 
+                       Margin="5" Padding="20"
+                       FontSize="Large"/>
+
+        <HorizontalStackLayout x:Name="databaseLegend" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="Center" >
+            <Grid ColumnDefinitions="100, 100, 125, 100, 100, 50, 50, 100"
+                  ColumnSpacing="18"
+                  Margin="2"
+                  Padding="5" BackgroundColor="#3EA8BE">
+                <Label Grid.Column="0" FontSize="Medium" Text="Name" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="1" FontSize="Medium" Text="Parent" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="2" FontSize="Medium" Text="Contact" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="3" FontSize="Medium" Text="Under 18" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="4" FontSize="Medium" Text="Due Back" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="5" FontSize="Medium" Text="Cost" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="6" FontSize="Medium" Text="Cash" HorizontalTextAlignment="Center"/>
+                <Label Grid.Column="8" FontSize="Medium" Text="Hiring" HorizontalTextAlignment="Center"/>
+            </Grid>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
+            <CollectionView x:Name="modalCollection"  
+                            BackgroundColor="#44DCF2"
+                            SelectionMode="Single"
+                            SelectionChanged="ModalCView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<StackLayout Orientation="Horizontal" Margin="5">-->
+                            <Grid ColumnDefinitions="100, 100, 125, 100, 100, 50, 50, 100"
+                              RowSpacing="5" ColumnSpacing="18"                             
+                              BackgroundColor="#3EA8BE" HorizontalOptions="Center" Margin="5" Padding="10">
+                                <Label Grid.Column="0" TextColor="White" FontSize="Medium" LineBreakMode="NoWrap" Text="{Binding Name}" HorizontalTextAlignment="Center"  />
+                                <Label Grid.Column="1" TextColor="White" FontSize="Medium" Text="{Binding Signature}" HorizontalTextAlignment="Center"  />
+                                <Label Grid.Column="2" TextColor="White" FontSize="Medium" LineBreakMode="NoWrap" Text="{Binding Contact}" HorizontalTextAlignment="Center" />
+                                <CheckBox Grid.Column="3" Margin="30,0,0,0" IsChecked="{Binding AgeNotOK}" IsEnabled="False" Color="WhiteSmoke"/>
+                                <Label Grid.Column="4" TextColor="White" FontSize="Medium" LineBreakMode="NoWrap" Text="{Binding TimeDueIn}" HorizontalTextAlignment="Center" />
+                                <Label Grid.Column="5" LineBreakMode="NoWrap" FontSize="Medium" Text="{Binding Price}" HorizontalTextAlignment="Center" />
+                                <CheckBox Grid.Column="6" Margin="10,0,0,0" IsChecked="{Binding Cash}" IsEnabled="False" Color="WhiteSmoke" />
+                                <Label Grid.Column="7" TextColor="White" FontSize="Medium" LineBreakMode="NoWrap" Text="{Binding HireImage}" HorizontalTextAlignment="Center" />
+                            </Grid>
+                        <!--</StackLayout>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

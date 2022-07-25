@@ -1,0 +1,138 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>SKTClientHires2022</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+
+		<!-- Display name -->
+		<ApplicationTitle>SKTClientHires2022</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.gruff.SKTClientHires2022</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationVersion>1</ApplicationVersion>
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+
+		<!--<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Images\skt_logo_oars.png" Color="#09223A" />
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<!-- Required - WinUI does not yet have buildTransitive for everything -->
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.1" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Khmer UI Bold.ttf" />
+	  <None Remove="Resources\Fonts\magnetobold.ttf" />
+	  <None Remove="Resources\Fonts\neon.ttf" />
+	  <None Remove="Resources\Images\cardicon.png" />
+	  <None Remove="Resources\Images\cashicon.png" />
+	  <None Remove="Resources\Images\croc.png" />
+	  <None Remove="Resources\Images\helpicon.png" />
+	  <None Remove="Resources\Images\hirebuttons.png" />
+	  <None Remove="Resources\Images\hireinputs.png" />
+	  <None Remove="Resources\Images\hireviewbuttons.png" />
+	  <None Remove="Resources\Images\HireViewInputs.png" />
+	  <None Remove="Resources\Images\icoarrows.png" />
+	  <None Remove="Resources\Images\icoboat.png" />
+	  <None Remove="Resources\Images\icocanoe.png" />
+	  <None Remove="Resources\Images\icocroc.png" />
+	  <None Remove="Resources\Images\icofloatjacket.png" />
+	  <None Remove="Resources\Images\icopaddles.png" />
+	  <None Remove="Resources\Images\icopedalo.png" />
+	  <None Remove="Resources\Images\icoquattrok.png" />
+	  <None Remove="Resources\Images\icorowboat.png" />
+	  <None Remove="Resources\Images\icosolok.png" />
+	  <None Remove="Resources\Images\icosup.png" />
+	  <None Remove="Resources\Images\icosuphalfday.png" />
+	  <None Remove="Resources\Images\icosuponehr.png" />
+	  <None Remove="Resources\Images\icosuptwohr.png" />
+	  <None Remove="Resources\Images\icotandemk.png" />
+	  <None Remove="Resources\Images\loginhelp.png" />
+	  <None Remove="Resources\Images\LoginPage.png" />
+	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\misc.png" />
+	  <None Remove="Resources\Images\miscnav.png" />
+	  <None Remove="Resources\Images\quattro.png" />
+	  <None Remove="Resources\Images\skt_logo_oars.png" />
+	  <None Remove="Resources\Images\solo.png" />
+	  <None Remove="Resources\Images\sup.png" />
+	  <None Remove="Resources\Images\tandem.png" />
+	  <None Remove="Resources\Images\whiteicoboatbig.png" />
+	  <None Remove="Resources\Images\whiteicomiscbig.png" />
+	  <None Remove="Resources\Images\whiteicopedalobig.png" />
+	  <None Remove="Resources\Images\whiteicosolokbig.png" />
+	  <None Remove="Resources\Images\whiteicosupbig.png" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Update="MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AddStaff.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ClientMainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ExportDataPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="HelpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="InfoYodal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'" />
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'" />
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041|AnyCPU'" />
+	
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041|AnyCPU'" />	
+</Project>

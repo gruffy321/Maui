@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SKTClientHires2022.HelpPage"
+             Title="HelpPage">
+    <StackLayout HorizontalOptions="Center">
+        <Label Text="ALL BRUHS, heres how you use this app..."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        <Grid RowDefinitions="1*, 1*, 1*, 1*, 1*" ColumnDefinitions="1*,1*"  HorizontalOptions="Center" RowSpacing="20" ColumnSpacing="20">
+            <Button x:Name="btnLoginHelp" Text="How to: Use Login Page" Grid.Row="0" Grid.Column="0" Clicked="BtnLoginHelp_Clicked"/>
+            <Button x:Name="btnSwiperHelp"  Text="How to: Use Hire Swipers" Grid.Row="1" Grid.Column="0" Clicked="BtnSwiperHelp_Clicked"/>
+            <Button x:Name="btnInputHelp"  Text="How to: Use Other Inputs" Grid.Row="0" Grid.Column="1" Clicked="BtnInputHelp_Clicked"/>
+            <Button x:Name="btnButtonsHelp"  Text="How to: Use Hire Buttons" Grid.Row="1" Grid.Column="1" Clicked="BtnButtonsHelp_Clicked"/>
+
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                <Image x:Name="imgLogin"
+                       Source="helpstart.png"
+                       Margin="100"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            </Grid>
+    </StackLayout>
+</ContentPage>

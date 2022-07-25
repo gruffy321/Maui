@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SKTClientHires2022.ExportDataPage"
+             Title="ExportDataPage">
+    <StackLayout Margin="20" Spacing="20">
+        <Label Text="Emailing the days faff"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+        <Entry x:Name="entEmailRecipient" Placeholder="email Address here..."/>
+        <Entry x:Name="entEmailSubject" Placeholder="must provide a subject" />
+        <Entry x:Name="entEmailBody" Placeholder="the info you want to send"/>
+        <Button Text="Send Email" x:Name="btnSendEmail" Clicked="BtnSendEmail_Clicked"/>
+    </StackLayout>
+</ContentPage>
